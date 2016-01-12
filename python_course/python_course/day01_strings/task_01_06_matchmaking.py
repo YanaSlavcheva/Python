@@ -76,11 +76,11 @@ people = [
 
 
 index_iterator = range(len(people))
-list_unique_index_pairs = []
+# list_unique_index_pairs = []
 list_proper_matches = []
 
 
-for i,j in itertools.permutations(index_iterator, 2):
+for i,j in itertools.combinations(index_iterator, 2):
     first_person = people[i]
     second_person = people[j]
 
@@ -92,13 +92,8 @@ for i,j in itertools.permutations(index_iterator, 2):
             pair_indexes.sort()
             pair_indexes.append(len(same_interests))
 
-# we make sure we do not have repetitions
-            string_indexes = str(pair_indexes[0]) + str(pair_indexes[1])      + str(len(same_interests))
-            if string_indexes not in list_unique_index_pairs:
-                pair_indexes_people_that_match.extend([pair_indexes, same_interests])
-                list_proper_matches.append(pair_indexes_people_that_match)
-                list_unique_index_pairs.append(string_indexes)
-
+            pair_indexes_people_that_match.extend([pair_indexes, same_interests])
+            list_proper_matches.append(pair_indexes_people_that_match)
 
 
 print(list_proper_matches)
