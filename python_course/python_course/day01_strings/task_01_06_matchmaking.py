@@ -74,7 +74,9 @@ people = [
     },
 ]
 
+
 index_iterator = range(len(people))
+list_unique_index_pairs = []
 list_proper_matches = []
 
 
@@ -83,14 +85,43 @@ for i,j in itertools.permutations(index_iterator, 2):
     second_person = people[j]
 
     if first_person['gender'] != second_person['gender']:
-        same_interests = set(first_person['interests']).intersection(second_person['interests'])
+        same_interests = list(set(first_person['interests']).intersection(second_person['interests']))
         if len(same_interests) > 0:
             pair_indexes_people_that_match = []
-            pair_indexes_people_that_match.extend([i, j, same_interests])
+            pair_indexes = [i, j]
+            pair_indexes.sort()
+            pair_indexes.append(len(same_interests))
 
-            list_proper_matches.append(pair_indexes_people_that_match)
+# we make sure we do not have repetitions
+            string_indexes = str(pair_indexes[0]) + str(pair_indexes[1])      + str(len(same_interests))
+            if string_indexes not in list_unique_index_pairs:
+                pair_indexes_people_that_match.extend([pair_indexes, same_interests])
+                list_proper_matches.append(pair_indexes_people_that_match)
+                list_unique_index_pairs.append(string_indexes)
+
+
 
 print(list_proper_matches)
 
 for pair in list_proper_matches:
-    print(people[pair[0]]['name'] + ' и ' + people[pair[1]]['name'] + ' - общ интерес: ' + ', '.join(pair[2]))
+
+    print(people[pair[0][0]]['name'] + ' и ' + people[pair[0][1]]['name'] + ' - общи интереси: ' + str(pair[0][2]) + 'броя -> ' + ', '.join(pair[1]))
+
+print(len(list_proper_matches))
+
+# until now we get all the matches - no repetitions
+
+
+# now we need to get the best match
+
+# list_proper_matches -> list of two lists
+
+# index_iterator_2 = range(len(list_proper_matches))
+#
+#     for i,j in itertools.permutations(index_iterator_2, 2):
+#         first_match = list_proper_matches[i]
+#         second_match = list_proper_matches[j]
+
+
+
+
