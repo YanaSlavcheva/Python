@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/PycharmProjects/python_course/.idea/PythonCourse.iml" filepath="$USER_HOME$/PycharmProjects/python_course/.idea/PythonCourse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PythonCourse.iml" filepath="$PROJECT_DIR$/.idea/PythonCourse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/python_course.iml" filepath="$PROJECT_DIR$/.idea/python_course.iml" />
     </modules>
   </component>
 </project>
